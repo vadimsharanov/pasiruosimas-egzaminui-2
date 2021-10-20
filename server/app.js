@@ -88,8 +88,8 @@ app.put('/cows/:id', (req, res) => {
 
 
 
-app.get("/paspirtukai/count", (req, res) => {
-    connection.query("SELECT count(id) as paspirtukuSkaicius FROM bandomasis.paspirtukai", (err, result)=> {
+app.get("/cows/count", (req, res) => {
+    connection.query("SELECT COUNT(id) as cowCount FROM cow_farm", (err, result)=> {
         if (err) {
             throw err
         }
@@ -99,8 +99,8 @@ app.get("/paspirtukai/count", (req, res) => {
 
 
 
-app.get("/paspirtukai/totalRide", (req, res) => {
-    connection.query("SELECT SUM(total_ride_kilometres) as rideSum FROM bandomasis.paspirtukai", (err, result)=> {
+app.get("/cows/totalMilk", (req, res) => {
+    connection.query("SELECT SUM(total_milk) as totalMilk FROM cow_farm;", (err, result)=> {
         if (err) {
             throw err
         }

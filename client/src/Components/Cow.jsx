@@ -4,8 +4,6 @@ function Cow({ cow, dateFormat, deleteCow,updateCow }) {
   const [newWeight, setNewWeight] = useState(cow.weight)
   const [newTotalMilk, setNewTotalMilk] = useState(0)
   const [newMilkingTime, setNewMilkingTime] = useState(cow.last_milking_time)
-console.log(cow.total_milk);
-console.log(newTotalMilk);
     const inputController = (event, value)=> {
         switch (value) {
             case "weight":

@@ -6,6 +6,8 @@ import Statistika from "./Components/Statistika";
 function App() {
 
   const [cows, setCows] = useState([])
+  const [cowsCount, setCowsCount] = useState(0)
+  const [cowsTotalMilk, setCowsTotalMilk] = useState(0)
   const [postuKeitimoLaikas, setPostuKeitimoLaikas] = useState(Date.now());
 
 
@@ -14,7 +16,6 @@ function App() {
       .get("http://localhost:3002/cows")
       .then(function (response) {
         // handle success4
-        console.log(response.data);
         setCows(response.data)
       })
       .catch(function (error) {
@@ -64,11 +65,44 @@ function App() {
       console.log(error);
     })
   }
+  const getCount = () => {
+    axios
+    .get("http://localhost:3002/cows/count")
+    .then(function (response) {
+      // handle success4
+      setCowsCount(response.data[0].cowCount)
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    });
+  }
+  const getCowsTotalMilk = () => {
+    axios
+    .get("http://localhost:3002/cows/totalMilk")
+    .then(function (response) {
+      // handle success4
+      setCowsTotalMilk(response.data[0].totalMilk)
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    });
+  }
+
+  useEffect(() => {
+    getCount()
+    getCowsTotalMilk()
+  }, [])
+
 
   const crud = {
     add:addCow,
-    delete: deleteCow
+    delete: deleteCow,
+    edit: updateCow,
   }
+
+  const 
 
   const dateFormat = (d) => {
     d = new Date(d)
@@ -86,9 +120,9 @@ function App() {
   
   return (
     <>
-    <Statistika></Statistika>
+    <Statistika count={cowsCount} total={cowsTotalMilk} ></Statistika>
     <NewCow addCow={crud.add} ></NewCow>
-    <Cows updateCow={updateCow} dateFormat={dateFormat} cows={cows} deleteCow={crud.delete} ></Cows>
+    <Cows updateCow={crud.edit} dateFormat={dateFormat} cows={cows} deleteCow={crud.delete} ></Cows>
     </>
   )
 }

@@ -1,0 +1,146 @@
+@import "./Components/layout.scss";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body * {
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  box-sizing: border-box;
+  font-family: 'Nunito', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+.cows-container {
+  margin: 20px;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  .one-cow-container {
+    border: 2px solid violet;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 10px;
+    font-size: 20px;
+
+    input {
+      width: 30%;
+    }
+    .one-cow-id {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      width: 60px;
+      height: 60px;
+      padding: 14px;
+      border-radius: 50%;
+      background-color: yellowgreen;
+    }
+    .one-cow-name {
+      
+      padding: 10px;
+    }
+    .one-cow-weight {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      
+      padding: 10px;
+    }
+    .one-cow-milk {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      
+    }
+    .one-cow-milking-time {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+    }
+    .trinimo-mygtukas {
+      width: 80px;
+      background-color: antiquewhite;
+      padding: 5px 10px 5px 10px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .redagavimo-mygtukas {
+      width: 120px;
+      background-color: antiquewhite;
+      padding: 5px 10px 5px 10px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+  }
+}
+
+.new-cow {
+  display: flex;
+  background-color: bisque;
+  border: 2px solid rosybrown;
+  text-align: center;
+  align-items: center;
+  padding: 30px;
+  .new-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .new-weight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .new-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .new-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  input {
+    margin-left: 10px;
+    padding: 15px 10px 10px 5px;
+    font-size: 18px;
+  }
+  span {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  button {
+    padding: 10px 40px 10px 40px;
+    font-size: 20px;
+    background-color: chartreuse;
+  }
+}
+
+.statistika {
+
+}

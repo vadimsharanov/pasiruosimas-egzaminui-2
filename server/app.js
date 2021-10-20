@@ -12,9 +12,9 @@ app.use(express.urlencoded( {
 app.use(express.json());
 const connection = mysql.createConnection( {
     host: "localhost",
-    user: "bandomasis",
-    database: "bandomasis",
-    password: "bandomasis_crud",
+    user: "bandomasis_egzaminas",
+    database: "agurkas",
+    password: "bandomasis_egzaminas",
 }) 
 
 connection.connect(err => {
@@ -24,8 +24,8 @@ connection.connect(err => {
     console.log("PAVYKO!!!!!!!");
 })
 
-app.get("/paspirtukai", (req, res) => {
-    connection.query("SELECT * FROM bandomasis.paspirtukai order by id desc", (err, result)=> {
+app.get("/cows", (req, res) => {
+    connection.query("SELECT * FROM agurkas.cow_farm order by  id desc", (err, result)=> {
         if (err) {
             throw err
         }
@@ -33,24 +33,27 @@ app.get("/paspirtukai", (req, res) => {
     })
 })
 
-app.post('/paspirtukai/', (req, res) => {
+app.post('/cows', (req, res) => {
     console.log(req.body);
   let sql = `
-  INSERT INTO bandomasis.paspirtukai
-  (registration_code, is_busy, last_use_time, total_ride_kilometres)
+  INSERT INTO agurkas.cow_farm
+  (name, weight, total_milk, last_milking_time)
    VALUES (?,?,?,?);
   `
-  connection.query(sql,[req.body.registrationCode,
-     0,"0000-00-00", "0"
+  connection.query(sql,[
+    req.body.cowName,
+    req.body.cowWeight,
+     0,
+     req.body.cowDate,
     ], (err,result) => {
     if (err) {throw err}
     res.send(result)
   })
 })
 
-app.delete('/paspirtukai/:id', (req, res) => {
+app.delete('/cows/:id', (req, res) => {
   let sql = `
-    delete from paspirtukai
+    delete from cow_farm
     where id = ?
   `
   connection.query(sql,[req.params.id], (err,result) => {
@@ -64,17 +67,17 @@ app.delete('/paspirtukai/:id', (req, res) => {
 // SET column1 = value1, column2 = value2, ...
 // WHERE condition;
 
-app.put('/paspirtukai/:id', (req, res) => {
+app.put('/cows/:id', (req, res) => {
     console.log(req.body);
   let sql = `
-    update paspirtukai
-    set  is_busy = ?, last_use_time = ?, total_ride_kilometres=?
+    update cow_farm
+    set  weight = ?, total_milk = ?, last_milking_time=?
     where id = ?
   `
   connection.query(sql,[
-    req.body.isBusy,
-    req.body.dateEdit,
-    req.body.totalRideKilometres,
+    req.body.newWeight,
+    req.body.newTotalMilk,
+    req.body.newMilkingTime,
     req.params.id,
     ], (err,result) => {
     if (err) {console.log(err) }

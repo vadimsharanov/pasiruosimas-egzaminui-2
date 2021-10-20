@@ -3,6 +3,7 @@ import Cows from "./Components/Cows"
 import axios from "axios";
 import NewCow from "./Components/NewCow";
 import Statistika from "./Components/Statistika";
+import Sorting from "./Components/Sorting";
 function App() {
 
   const [cows, setCows] = useState([])
@@ -16,6 +17,7 @@ function App() {
       .get("http://localhost:3002/cows")
       .then(function (response) {
         // handle success4
+        console.log(response.data);
         setCows(response.data)
       })
       .catch(function (error) {
@@ -102,7 +104,6 @@ function App() {
     edit: updateCow,
   }
 
-  const 
 
   const dateFormat = (d) => {
     d = new Date(d)
@@ -118,9 +119,25 @@ function App() {
     return (`${year}-${month}-${day}`)
   }
   
+  // Sukurkite rūšiavimo galimybę pagal gyvulio svorį ir pieno kiekį (sukurkite du mygtukus,
+  //   kuriuos paspaudus gyvulių aprašai išsirikiuotų atitinkama tvarka). Tam panaudokite
+  //   Angular ar React galimybes (ne serverio).
+
+
+  const sortByWeight = () => {
+    let cowsCopy = cows.slice()
+    cowsCopy = cowsCopy.sort((a,b)=> b.weight - a.weight)
+    setCows(cowsCopy)
+  }
+
+  const sortByMilk = () => {
+    let cowsCopy = cows.slice()
+    cowsCopy = cowsCopy.sort((a,b)=> b.total_milk - a.total_milk)
+    setCows(cowsCopy)
+  }
   return (
     <>
-    <Statistika count={cowsCount} total={cowsTotalMilk} ></Statistika>
+    <Statistika count={cowsCount} total={cowsTotalMilk} sortByWeight={sortByWeight}  sortByMilk={sortByMilk} ></Statistika>
     <NewCow addCow={crud.add} ></NewCow>
     <Cows updateCow={crud.edit} dateFormat={dateFormat} cows={cows} deleteCow={crud.delete} ></Cows>
     </>

@@ -26,7 +26,7 @@ code {
   gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   .one-cow-container {
-    border: 2px solid violet;
+    border: 3px solid violet;
     margin: 20px;
     display: flex;
     flex-direction: column;
@@ -46,7 +46,7 @@ code {
       height: 60px;
       padding: 14px;
       border-radius: 50%;
-      background-color: yellowgreen;
+      background-color:rgb(36, 212, 204);
     }
     .one-cow-name {
       
@@ -142,5 +142,12 @@ code {
 }
 
 .statistika {
-
+  .button-weight {
+    padding: 10px 5px 10px 5px;
+    background-color: skyblue;
+  }
+  .button-milk {
+    padding: 10px 5px 10px 5px;
+    background-color:salmon;
+  }
 }

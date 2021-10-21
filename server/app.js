@@ -46,7 +46,7 @@ app.post('/cows', (req, res) => {
      0,
      req.body.cowDate,
     ], (err,result) => {
-    if (err) {throw err}
+    if (err) {console.log("klaida");}
     res.send(result)
   })
 })

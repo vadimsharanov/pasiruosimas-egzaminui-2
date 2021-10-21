@@ -7,13 +7,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;  
 }
 body * {
   margin: 0;
   padding: 0;
   vertical-align: top;
   box-sizing: border-box;
-  font-family: 'Nunito', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Nunito", "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+    sans-serif;
 }
 
 code {
@@ -46,30 +48,27 @@ code {
       height: 60px;
       padding: 14px;
       border-radius: 50%;
-      background-color:rgb(36, 212, 204);
+      background-color: rgb(36, 212, 204);
     }
     .one-cow-name {
-      
       padding: 10px;
     }
     .one-cow-weight {
       display: flex;
       justify-content: space-between;
       gap: 10px;
-      
+
       padding: 10px;
     }
     .one-cow-milk {
       display: flex;
       justify-content: space-between;
       padding: 10px;
-      
     }
     .one-cow-milking-time {
       display: flex;
       justify-content: space-between;
       padding: 10px;
-      
     }
 
     .button-container {
@@ -148,6 +147,6 @@ code {
   }
   .button-milk {
     padding: 10px 5px 10px 5px;
-    background-color:salmon;
+    background-color: salmon;
   }
 }

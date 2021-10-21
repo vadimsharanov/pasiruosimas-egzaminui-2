@@ -4,6 +4,7 @@ function NewCow({ addCow }) {
   const [cowName, setCowName] = useState("");
   const [cowWeight, setCowWeight] = useState("");
   const [cowDate, setCowDate] = useState("");
+  const [klaida, setKlaida] = useState(false)
 
   const inputController = (event, value) => {
     switch (value) {
@@ -25,8 +26,25 @@ function NewCow({ addCow }) {
       cowWeight: parseInt(cowWeight),
       cowDate: cowDate
     };
-    addCow(data);
+    console.log(data);
+    if (cowName === "") {
+        alert(`Laukas "Name" negali buti tuscias!`)
+    }
+    if (isNaN(parseInt(cowWeight))) {
+        alert(`Laukas "Weight" negali buti tuscias!`)
+    }
+    if (cowDate === "") {
+        alert(`Laukas "Date" negali buti tuscias!`)
+    }
+    else {
+        addCow(data);
+        setCowName("")
+        setCowWeight("")
+        setCowDate("")
+        alert("Karve sukurta!")
+    }
   };
+  console.log(isNaN(cowWeight));
   return (
     <section>
       <div className="container ">
@@ -37,6 +55,7 @@ function NewCow({ addCow }) {
               <input
                 type="text"
                 onChange={(event) => inputController(event, "name")}
+                value={cowName}
               />
             </div>
           </div>
@@ -46,6 +65,7 @@ function NewCow({ addCow }) {
               <input
                 type="number"
                 onChange={(event) => inputController(event, "weight")}
+                value={cowWeight}
               />
             </div>
           </div>
@@ -55,6 +75,7 @@ function NewCow({ addCow }) {
               <input
                 type="date"
                 onChange={(event) => inputController(event, "date")}
+                value={cowDate}
               />
             </div>
           </div>
